@@ -46,12 +46,12 @@ public class HelloController {
 
     @FXML
     public void RatInMaze(ActionEvent actionEvent) {
-        load("ratInMaze.fxml");
+        load("rat-in-maze.fxml");
     }
 
     @FXML
     public void Home(ActionEvent actionEvent) {
-        this.txtMessage.setText("Laboratory No. 1");
+        this.txtMessage.setText("Laboratory No. 2");
         this.bp.setCenter(ap);
     }
 
