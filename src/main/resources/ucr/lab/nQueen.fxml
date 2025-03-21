@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f9e79f;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucr.lab.controller.NQueenController">
+<AnchorPane prefHeight="575.0" prefWidth="693.0" style="-fx-background-color: #f9e79f;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucr.lab.controller.NQueenController">
    <children>
-      <TextArea disable="true" nodeOrientation="RIGHT_TO_LEFT" opacity="0.35" prefHeight="55.0" prefWidth="601.0" style="-fx-background-color: #105980;" />
-      <Text layoutX="129.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N Queens Problem">
+      <TextArea disable="true" editable="false" nodeOrientation="RIGHT_TO_LEFT" opacity="0.35" prefHeight="55.0" prefWidth="816.0" style="-fx-background-color: #105980;" />
+      <Text layoutX="218.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N Queens Problem">
          <font>
             <Font size="41.0" />
          </font>
       </Text>
-      <TableView layoutX="27.0" layoutY="157.0" prefHeight="216.0" prefWidth="552.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-      <Text layoutX="239.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N-Queen Solution">
+      <TableView fx:id="tbBoard" layoutX="142.0" layoutY="146.0" prefHeight="358.0" prefWidth="495.0" />
+      <Text layoutX="314.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N-Queen Solution">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="164.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a board size:">
+      <Text layoutX="158.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a board size:">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <ComboBox layoutX="303.0" layoutY="105.0" prefWidth="150.0" visibleRowCount="2" />
+      <ComboBox fx:id="cbBoard" layoutX="314.0" layoutY="98.0" onShowing="#listarBoards" prefWidth="150.0" promptText="Board Size" />
+      <Button fx:id="btShow" layoutX="495.0" layoutY="98.0" mnemonicParsing="false" onAction="#showSolution" text="Show" />
+      <Button fx:id="btClean" layoutX="660.0" layoutY="98.0" mnemonicParsing="false" onAction="#cleanBoard" text="Clean" />
    </children>
 </AnchorPane>

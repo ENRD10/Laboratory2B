@@ -15,7 +15,8 @@ class NQueenProblemTest {
                 {0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0},  {0,0,0,0,0,0,0,0}
+                {0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0}
         };
         System.out.println("N Queen Problem for a 8x8 board\n"); System.out.println(printBoard(board1));
         System.out.println("\nSolution");

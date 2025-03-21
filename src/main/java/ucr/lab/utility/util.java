@@ -1,5 +1,7 @@
 package ucr.lab.utility;
 
+import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
@@ -81,5 +83,11 @@ public class util {
     public static String format(double n) {
         return new DecimalFormat("#### ####.##").format(n);
     }
+
+    public static void LlenarCombo(ComboBox<String>  llenarcombo, ObservableList<String> infocombo){
+        llenarcombo.setItems(infocombo);
+    }
+
+
 }
 
