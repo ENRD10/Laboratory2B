@@ -15,73 +15,49 @@ public class SudokuSolverController {
     private TableView<Integer[]> solutionTable;
     @javafx.fxml.FXML
     private TableView<Integer[]> sudokuTable;
-    SudokuSolver sudokuSolver;
-    int[][] board1;
-    TableView<Integer[]> sudokuTable1;
-    TableView<Integer[]> sudokuTable2;
-    TableView<Integer[]> sudokuTable3;
-    TableView<Integer[]> sudokuTable4;
-    TableView<Integer[]> sudokuTable5;
-    int[][] board2;
-    int[][] board3;
-    int[][] board4;
-    int[][] board5;
-
+    SudokuSolver sudoku1;
+    SudokuSolver sudoku2; boolean solved2;
+    SudokuSolver sudoku3; boolean solved3;
+    SudokuSolver sudoku4; boolean solved4;
+    SudokuSolver sudoku5; boolean solved5;
 
     @javafx.fxml.FXML
     public void initialize() {
-        sudokuSolver = new SudokuSolver();
         ObservableList<String> options = FXCollections.observableArrayList();
         options.addAll("Board 1", "Board 2", "Board 3", "Board 4", "Board 5");
-
-        board1 = sudokuSolver.randomBoard();
-        sudokuTable1 = new TableView<>();
-        utilFx.configureTableView(sudokuTable1, board1);
-
-        board2 = sudokuSolver.randomBoard();
-        sudokuTable2 = new TableView<>();
-        utilFx.configureTableView(sudokuTable2, board2);
-
-        board3 = sudokuSolver.randomBoard();
-        sudokuTable3 = new TableView<>();
-        utilFx.configureTableView(sudokuTable3, board3);
-
-        board4 = sudokuSolver.randomBoard();
-        sudokuTable4 = new TableView<>();
-        utilFx.configureTableView(sudokuTable4, board4);
-
-        board5 = sudokuSolver.randomBoard();
-        sudokuTable5 = new TableView<>();
-        utilFx.configureTableView(sudokuTable5, board5);
-
+        sudoku1 = new SudokuSolver();
         comboBox.setItems(options);
         comboBox.setValue(comboBox.getItems().getFirst());
-        utilFx.configureTableView(sudokuTable, board1);
-        utilFx.configureTableView(solutionTable, sudokuSolver.getSolution(board1));
+        utilFx.configureTableView(sudokuTable, sudoku1.getOriginalBoard());
+        utilFx.configureTableView(solutionTable, sudoku1.getSolution());
     }
 
     @javafx.fxml.FXML
     public void comboBox(ActionEvent actionEvent) {
         switch (comboBox.getValue()) {
             case "Board 1":
-                sudokuTable.setItems(sudokuTable1.getItems());
-                utilFx.configureTableView(solutionTable, sudokuSolver.getSolution(board1));
+                utilFx.configureTableView(sudokuTable, sudoku1.getOriginalBoard());
+                utilFx.configureTableView(solutionTable, sudoku1.getSolution());
                 break;
             case "Board 2":
-                sudokuTable.setItems(sudokuTable2.getItems());
-                utilFx.configureTableView(solutionTable, sudokuSolver.getSolution(board2));
+                if (!solved2) sudoku2 = new SudokuSolver(); solved2 = true;
+                utilFx.configureTableView(sudokuTable, sudoku2.getOriginalBoard());
+                utilFx.configureTableView(solutionTable, sudoku2.getSolution());
                 break;
             case "Board 3":
-                sudokuTable.setItems(sudokuTable3.getItems());
-                utilFx.configureTableView(solutionTable, sudokuSolver.getSolution(board3));
+                if (!solved3) sudoku3 = new SudokuSolver(); solved3 = true;
+                utilFx.configureTableView(sudokuTable, sudoku3.getOriginalBoard());
+                utilFx.configureTableView(solutionTable, sudoku3.getSolution());
                 break;
             case "Board 4":
-                sudokuTable.setItems(sudokuTable4.getItems());
-                utilFx.configureTableView(solutionTable, sudokuSolver.getSolution(board4));
+                if (!solved4) sudoku4 = new SudokuSolver(); solved4 = true;
+                utilFx.configureTableView(sudokuTable, sudoku4.getOriginalBoard());
+                utilFx.configureTableView(solutionTable, sudoku4.getSolution());
                 break;
             case "Board 5":
-                sudokuTable.setItems(sudokuTable5.getItems());
-                utilFx.configureTableView(solutionTable, sudokuSolver.getSolution(board5));
+                if (!solved5) sudoku5 = new SudokuSolver(); solved5 = true;
+                utilFx.configureTableView(sudokuTable, sudoku5.getOriginalBoard());
+                utilFx.configureTableView(solutionTable, sudoku5.getSolution());
                 break;
         }
     }

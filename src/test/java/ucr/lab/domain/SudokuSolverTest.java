@@ -8,13 +8,11 @@ class SudokuSolverTest {
 
     @Test
     void test() {
-        SudokuSolver solver = new SudokuSolver();
-        int[][] board = solver.randomBoard();
+        SudokuSolver sudoku = new SudokuSolver();
         System.out.println("Sudoku Solver Random Board\n");
-        System.out.println(printBoard(board));
-        int[][] solution = solver.getSolution(board);
+        System.out.println(printBoard(sudoku.getOriginalBoard()));
         System.out.println("\nSolution");
-        System.out.println(printBoard(solution));
+        System.out.println(printBoard(sudoku.getSolution()));
     }
 
     private String printBoard(int[][] board) {

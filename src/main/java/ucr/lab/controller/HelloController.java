@@ -1,6 +1,7 @@
 package ucr.lab.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -63,5 +64,10 @@ public class HelloController {
     @FXML
     public void Exit(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    @FXML
+    public void sudokuOnMousePressed(Event event) {
+        this.txtMessage.setText("Loading Sudoku... Please wait...");
     }
 }

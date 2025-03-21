@@ -5,13 +5,31 @@ import ucr.lab.utility.util;
 public class SudokuSolver {
     private final int n = 9; // Tamaño del Sudoku
     private int[][] solution;
+    private final int[][] originalBoard;
 
-    public int [][] getSolution(int[][] board) {
-        solveSudoku(board,0, 0);
+    public SudokuSolver() {
+        int[][] board = randomBoard();
+        this.originalBoard = copyBoard(board);
+        solveSudoku(board, 0, 0);
+    }
+
+    public int [][] getOriginalBoard() {
+        return originalBoard;
+    }
+
+    public int [][] getSolution() {
         return solution;
     }
 
-    public int [][] randomBoard() {
+    private int[][] copyBoard(int[][] board) {
+        int[][] copy = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            copy[i] = board[i].clone(); // Clonar cada fila individualmente
+        }
+        return copy;
+    }
+
+    private int [][] randomBoard() {
         int[][] board = new int[n][n];
         int hints = 0;
         while (hints < 17) {

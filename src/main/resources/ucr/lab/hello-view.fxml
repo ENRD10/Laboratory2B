@@ -36,7 +36,7 @@
                         <Font name="Arial" size="30.0" />
                     </font>
                 </Button>
-            <Button mnemonicParsing="false" onAction="#SudokuSolver" prefHeight="62.0" prefWidth="217.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Sudoku" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#SudokuSolver" onMousePressed="#sudokuOnMousePressed" prefHeight="62.0" prefWidth="217.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Sudoku" textFill="WHITE">
                <font>
                   <Font name="Arial" size="30.0" />
                </font>

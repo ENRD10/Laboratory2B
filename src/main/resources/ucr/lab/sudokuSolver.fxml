@@ -32,7 +32,7 @@
             <ComboBox fx:id="comboBox" layoutX="202.0" layoutY="134.0" onAction="#comboBox" prefHeight="25.0" prefWidth="116.0" promptText="Board 1" style="-fx-background-color: #ffffff; -fx-border-color: #b5b5b5;" />
          </children>
       </Pane>
-      <Pane layoutX="10.0" layoutY="10.0" prefHeight="690.0" prefWidth="392.5">
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="690.0" prefWidth="392.5" style="-fx-background-color: #e0feff;">
          <children>
             <TableView fx:id="solutionTable" layoutX="17.0" layoutY="195.0" prefHeight="360.0" prefWidth="360.0">
                <columnResizePolicy>
