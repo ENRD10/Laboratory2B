@@ -20,6 +20,10 @@ public class util {
         random = new Random(seed);
     }
 
+    public static int random (int min, int max){ //min y max incluyentes
+        return min + random.nextInt((max - min) + 1);
+    }
+
     public static int random (int bound){
         //return (int) Math.floor(Math.random()*bound); //forma 1
         return 1+random.nextInt(bound);
