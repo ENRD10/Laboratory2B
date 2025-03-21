@@ -34,9 +34,11 @@ public class utilFx {
 
             // Ajustar el tamaño de las columnas equitativamente
             column.setPrefWidth(tableView.getPrefWidth() / n);
+            tableView.setFixedCellSize(tableView.getPrefHeight() / (n+1.1));
 
             // Definir cómo obtener los valores de la matriz
-            column.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue()[columnIndex]).asObject().asString());
+            column.setCellValueFactory(cellData ->
+                    new SimpleIntegerProperty(cellData.getValue()[columnIndex]).asObject().asString());
             tableView.getColumns().add(column);
         }
 

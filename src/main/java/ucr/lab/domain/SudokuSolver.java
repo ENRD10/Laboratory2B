@@ -58,7 +58,7 @@ public class SudokuSolver {
             if (isValid(board, row, col, num)){
                 board[row][col] = num;
                 if (solveSudoku(board, row, col+1)) return true;
-                board[row][col] = 0;
+                board[row][col] = 0; //BACKTRACK
             }
         }
 
