@@ -25,7 +25,7 @@ public class RatInMaze {
     }
 
     private boolean solveRatInMaze (int[][] maze, int i, int j, int n) {
-        //Si hemos llegado a la posicion final entonce ya encontramos la solucion
+        //Si hemos llegado a la posicion final entonces ya encontramos la solucion
         if (i==n-1 && j==n-1) {
             maze[i][j] = 2; //marcamos la ultima posicion como ruta valida
             return true;
@@ -41,7 +41,7 @@ public class RatInMaze {
         return false;
     }
 
-    private boolean isSafe (int[][] maze, int i, int j, int n) {
+    private boolean isSafe(int[][] maze, int i, int j, int n) {
         return i>=0 && i<n && j>=0 && j<n && maze[i][j]==1;
     }
 }

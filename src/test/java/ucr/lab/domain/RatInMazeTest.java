@@ -16,12 +16,12 @@ class RatInMazeTest {
                 {1,1,1,1}
         };
         System.out.println("Rat in maze for a 4x4 board\n");
-        System.out.println(prinBoard(maze));
+        System.out.println(printBoard(maze));
         System.out.println("\nSolution");
         System.out.println(rat.printSolution(maze));
     }
 
-    private String prinBoard(int[][] maze) {
+    private String printBoard(int[][] maze) {
         String result = "";
         int n = maze.length;
         for (int i = 0; i < n; i++) {
