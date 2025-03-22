@@ -1,94 +1,47 @@
 package ucr.lab.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.scene.control.Button;
+import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import ucr.lab.domain.NQueenProblem;
-
-import static ucr.lab.utility.util.LlenarCombo;
+import ucr.lab.domain.NQueen;
+import ucr.lab.utility.utilFx;
 
 public class NQueenController {
 
-    public ComboBox cbBoard;
-    public TableView tbBoard;
-    public Button btShow;
+    // Atributos del controlador
+    @FXML
+    private ComboBox<String> comboBoxSize; // ComboBox para seleccionar el tamaño del tablero (4x4 o 8x8)
 
-    ObservableList<String> options = FXCollections.observableArrayList("8 x 8","4 x 4");
+    @FXML
+    private TableView<Integer []> tableroVista; // TableView donde se muestra la solución del problema de las N-Reinas
 
-    public void listarBoards(Event event) {
-        LlenarCombo(cbBoard,options);
+    public void initialize() {
+        // Configura el ComboBox con las opciones de tamaño de tablero
+        comboBoxSize.getItems().clear();
+        comboBoxSize.getItems().addAll("4x4", "8x8"); // Opciones para elegir tamaño de tablero
+        comboBoxSize.setValue("Presione la flecha"); // Mensaje por defecto en el ComboBox
+
+        // Listener para detectar cuando se selecciona un nuevo tamaño y actualizar la solución
+        comboBoxSize.valueProperty().addListener((observable, oldValue, newValue) -> resolverNQueensProblem());
     }
 
-    public void showSolution(Event event) {
-        NQueenProblem queen = new NQueenProblem();
-        if (cbBoard.getValue() == "4 x 4"){
+    @FXML
+    private void resolverNQueensProblem() {
+        // Obtener el valor del ComboBox ya elegido
+        String tableroSize = comboBoxSize.getValue();
 
-            int[][] board = {
-                    {0, 0, 0, 0},
-                    {0, 0, 0, 0},
-                    {0, 0, 0, 0},
-                    {0, 0, 0, 0}
-            };
-            queen.printSolution(board);
-            int columns = board[0].length;
 
-            // Crear columnas
-            for (int col = 0; col < columns; col++) {
-                final int columnIndex = col;
-                TableColumn<int[], Integer> column = new TableColumn<>("Col " + (col + 1));
-                column.setCellValueFactory(cellData -> {
-                    int[] row = cellData.getValue();
-                    return new javafx.beans.property.SimpleIntegerProperty(row[columnIndex]).asObject();
-                });
-                tbBoard.getColumns().add(column);
-            }
-
-            // Convertir matriz en ObservableList
-            ObservableList<int[]> data = FXCollections.observableArrayList(board);
-            tbBoard.setItems(data);
-
-        }else{
-            int[][] board1= {
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0}
-            };
-            queen.printSolution(board1);
-            int columns = board1[0].length;
-
-            // Crear columnas
-            for (int col = 0; col < columns; col++) {
-                final int columnIndex = col;
-                TableColumn<int[], Integer> column = new TableColumn<>("Col " + (col + 1));
-                column.setCellValueFactory(cellData -> {
-                    int[] row = cellData.getValue();
-                    return new javafx.beans.property.SimpleIntegerProperty(row[columnIndex]).asObject();
-                });
-                tbBoard.getColumns().add(column);
-            }
-
-            // Convertir matriz en ObservableList
-            ObservableList<int[]> data = FXCollections.observableArrayList(board1);
-            tbBoard.setItems(data);
-
+        int size = 4; // creamos los valores empezamos por 4
+        if (tableroSize.equals("8x8")) {
+            size = 8; // sino trae tablero size 8
         }
 
-    }
+        // Crear el objeto NQueen con el tamaño
+        NQueen Queen = new NQueen(size);
 
-    public void cleanBoard(ActionEvent actionEvent) {
-        if (!tbBoard.getColumns().isEmpty()) {
-            tbBoard.getColumns().clear();
+        // Si se encuentra solución, mostrarla(TIENE QUE MOSTRARLA)
+        if (Queen.puntoInicial()) {
+            utilFx.configureTableView(tableroVista, Queen.getTablero());
         }
     }
 }
-

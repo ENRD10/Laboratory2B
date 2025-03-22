@@ -27,16 +27,25 @@ public class utilFx {
         // Limpiar columnas previas
         tableView.getColumns().clear();
 
+        double computedColumnWidth = tableView.getPrefWidth() / n;
         // Crear columnas dinámicamente
         for (int col = 0; col < n; col++) {
             final int columnIndex = col;
             TableColumn<Integer[], String> column = new TableColumn<>("C" + (col + 1));
 
             // Ajustar el tamaño de las columnas equitativamente
-            column.setPrefWidth(tableView.getPrefWidth() / n);
+            if (computedColumnWidth < 30){
+                column.setMinWidth(30);
+                tableView.setFixedCellSize(30);
+            }
+            else {
+                column.setPrefWidth(tableView.getPrefWidth() / n);
+                tableView.setFixedCellSize(tableView.getPrefHeight() / (n+1.5));
+            }
 
             // Definir cómo obtener los valores de la matriz
-            column.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue()[columnIndex]).asObject().asString());
+            column.setCellValueFactory(cellData ->
+                    new SimpleIntegerProperty(cellData.getValue()[columnIndex]).asObject().asString());
             tableView.getColumns().add(column);
         }
 

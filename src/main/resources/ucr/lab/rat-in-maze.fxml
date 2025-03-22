@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="512.0" prefWidth="709.0" style="-fx-background-color: #f9e79f;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucr.lab.controller.RatInMazeController">
+<AnchorPane prefHeight="690.0" prefWidth="785.0" style="-fx-background-color: #f9e79f;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucr.lab.controller.RatInMazeController">
    <children>
       <TextArea layoutX="33.0" layoutY="-3.0" opacity="0.08" prefHeight="72.0" prefWidth="746.0" style="-fx-background-color: #f39c12;" stylesheets="@stylesheet.css" />
       <Text layoutX="290.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rat in Maze">
@@ -27,6 +28,7 @@
             <ComboBox fx:id="cbMaze" layoutY="1.0" onAction="#resolver" onShowing="#listarMaze" prefWidth="150.0" promptText="Maze" />
          </children>
       </Pane>
+<<<<<<< HEAD
       <TableView fx:id="tvInicial" layoutX="66.0" layoutY="173.0" prefHeight="329.0" prefWidth="321.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -36,11 +38,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy></TableView>
       <Text layoutX="544.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution">
+=======
+      <TableView fx:id="tvInicial" layoutX="10.0" layoutY="182.0" prefHeight="380.0" prefWidth="380.0" />
+      <TableView fx:id="tvSolution" layoutX="395.0" layoutY="182.0" prefHeight="380.0" prefWidth="380.0" />
+      <Text layoutX="547.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution">
+>>>>>>> 40f7bc226c948f54fc84f2bb15c3d7a3198a254d
          <font>
             <Font size="21.0" />
          </font>
       </Text>
       <Text layoutX="213.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicial">
+      <Text layoutX="175.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicial">
          <font>
             <Font size="20.0" />
          </font>

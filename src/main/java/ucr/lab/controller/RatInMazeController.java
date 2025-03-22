@@ -17,40 +17,21 @@ import static ucr.lab.utility.util.LlenarCombo;
 
 public class RatInMazeController {
 
-    public ComboBox cbMaze;
-    public TableView tvInicial;
-    public TableView tvSolution;
+    public ComboBox<String> cbMaze;
+    public TableView<Integer []> tvInicial;
+    public TableView<Integer []> tvSolution;
     private RatInMaze ratInMaze;
     private RatInMazeController rat;
 
     @javafx.fxml.FXML
     public void initialize() {
         this.ratInMaze = new RatInMaze();
-
-        ObservableList<String> options = FXCollections.observableArrayList("Maze 1", "Maze 2", "Maze 3", "Maze 4", "Maze 5");
-        options.addAll("Board 1", "Board 2", "Board 3", "Board 4", "Board 5");
+        ObservableList<String> options = FXCollections.observableArrayList();
+        options.addAll("Maze 1", "Maze 2", "Maze 3", "Maze 4", "Maze 5");
         cbMaze.setItems(options);
         cbMaze.setValue(cbMaze.getItems().getFirst());
         utilFx.configureTableView(tvInicial, maze1);
         utilFx.configureTableView(tvSolution, ratInMaze.printSolutionMatriz(maze1));
-    }
-
-    ObservableList<String> options = FXCollections.observableArrayList("Maze 1", "Maze 2", "Maze 3", "Maze 4", "Maze 5");
-
-    public void listarMaze(Event event) {
-        LlenarCombo(cbMaze, options);
-    }
-
-    public String printBoard(int[][] maze) {
-        String result = "";
-        int n = maze.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                result += maze[i][j] == 0 ? " x" : " " + maze[i][j];
-            }
-            result += "\n";
-        }
-        return result;
     }
 
     public void fillMaze(int[][] maze) {
@@ -86,38 +67,10 @@ public class RatInMazeController {
 
     int[][] maze5 = new int[16][16];
 
-    public void showSolution(int[][] maze) {
-        fillMaze(maze);
-        printBoard(maze);
-        int columns = maze[0].length;
-
-        // Crear columnas
-        for (int col = 0; col < columns; col++) {
-            final int columnIndex = col;
-            TableColumn<int[], Integer> column = new TableColumn<>("Col " + (col + 1));
-            column.setCellValueFactory(cellData -> {
-                int[] row = cellData.getValue();
-                return new javafx.beans.property.SimpleIntegerProperty(row[columnIndex]).asObject();
-            });
-            tvInicial.getColumns().add(column);
-
-            ratInMaze.printSolution(maze);
-            // Crear columnas
-            for (int colu = 0; colu < columns; colu++) {
-                final int coluIndex = colu;
-                TableColumn<int[], Integer> colum = new TableColumn<>("Col " + (colu + 1));
-                column.setCellValueFactory(cellData -> {
-                    int[] row = cellData.getValue();
-                    return new javafx.beans.property.SimpleIntegerProperty(row[columnIndex]).asObject();
-                });
-                tvSolution.getColumns().add(colum);
-            }
-        }
-    }//end showSolution
     @javafx.fxml.FXML
     public void resolver(ActionEvent actionEvent) {
 
-        switch (cbMaze.getValue().toString()) {
+        switch (cbMaze.getValue()) {
             case "Maze 1":
                 fillMaze(maze1);
                 utilFx.configureTableView(tvInicial, maze1);

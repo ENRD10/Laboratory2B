@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
@@ -42,7 +41,7 @@ public class HelloController {
 
     @FXML
     public void NQueen(ActionEvent actionEvent) {
-        load("nQueen.fxml");
+        load("NQueen.fxml");
     }
 
     @FXML
